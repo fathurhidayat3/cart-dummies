@@ -15,8 +15,8 @@ export default function ProductCompartment(props: Props) {
 
   return (
     <div>
-      <h1>Recommended Products</h1>
-      <div style={{ display: "flex", flexDirection: "row" }}>
+      <h2>Recommended Products</h2>
+      <div style={{ display: "flex", flexDirection: "row", padding: "20px 0" }}>
         {dummyProducts.map((product: Product) => {
           return (
             <ProductCard

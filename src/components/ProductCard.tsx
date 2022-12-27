@@ -11,17 +11,31 @@ export default function ProductCard(props: Props) {
   const { product, onClick } = props;
   const { name, image, price, location } = product;
 
+  const [showButton, setShowButton] = React.useState(false);
+
   return (
-    <div style={{ padding: 20 }}>
+    <div
+      onMouseOver={() => setShowButton(true)}
+      onMouseLeave={() => setShowButton(false)}
+      style={{
+        margin: "0 8px",
+        padding: "16px",
+        border: "1px solid grey",
+        borderRadius: 4,
+      }}
+    >
       <div>
         <img src={image} />
       </div>
       <h3>{name}</h3>
       <div>
         <p>Rp{price}</p>
-        <p>{location}</p>
+        {showButton ? (
+          <button onClick={() => onClick(product)}>Add To Cart</button>
+        ) : (
+          <p>{location}</p>
+        )}
       </div>
-      <button onClick={() => onClick(product)}>Add To Cart</button>
     </div>
   );
 }
