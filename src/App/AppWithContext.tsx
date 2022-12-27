@@ -11,7 +11,6 @@ export default function AppWithCartContext() {
   return (
     <main>
       <ProductCompartment addToCart={addToCart} />
-      <hr />
       <Cart
         items={cartItems}
         decreaseAmount={decreaseAmount}

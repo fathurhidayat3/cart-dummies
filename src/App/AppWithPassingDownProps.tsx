@@ -64,7 +64,6 @@ export default function AppWithPassingDownProps() {
   return (
     <main>
       <ProductCompartment addToCart={handleAddToCart} />
-      <hr />
       <Cart
         items={cartItems}
         decreaseAmount={handleDecreaseAmount}

@@ -41,7 +41,6 @@ export default function Cart(props: Props) {
           "Cart is Empty"
         )}
       </div>
-      <hr />
       <h3>Total Price</h3>
       {calculateCartTotalPrice(items)}
     </div>

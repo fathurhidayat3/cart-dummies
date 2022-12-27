@@ -19,7 +19,6 @@ export default function AppWithReducer() {
           })
         }
       />
-      <hr />
       <Cart
         items={state.items}
         decreaseAmount={(id) =>

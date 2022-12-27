@@ -21,7 +21,6 @@ export default function AppWithZustand() {
   return (
     <main>
       <ProductCompartment addToCart={addToCart} />
-      <hr />
       <Cart
         items={cartItems}
         decreaseAmount={decreaseAmount}
