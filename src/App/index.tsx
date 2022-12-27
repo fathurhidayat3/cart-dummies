@@ -4,6 +4,7 @@ import AppWithCartContext from "./AppWithContext";
 import AppWithPassingDownProps from "./AppWithPassingDownProps";
 import AppWithReducer from "./AppWithReducer";
 import CartContextProvider from "../components/Cart/CartContext";
+import AppWithZustand from "./AppWithZustand";
 
 export default function App() {
   //   return <AppWithPassingDownProps />;
@@ -14,5 +15,7 @@ export default function App() {
   //   </CartContextProvider>
   // );
 
-  return <AppWithReducer />;
+  // return <AppWithReducer />;
+
+  return <AppWithZustand />;
 }

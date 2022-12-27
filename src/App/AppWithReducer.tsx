@@ -34,7 +34,7 @@ export default function AppWithReducer() {
             productID: id,
           })
         }
-        removeItem={(id) => {
+        removeItem={(id, name) => {
           if (confirm(`Are you sure want to remove ${name}`) === true) {
             dispatch({
               type: CartReducerActionKind.REMOVE_ITEM,
