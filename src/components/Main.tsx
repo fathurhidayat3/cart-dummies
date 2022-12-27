@@ -11,7 +11,7 @@ export default function Main(props: Props) {
     props;
 
   return (
-    <main style={{ display: "flex", flexDirection: "row" }}>
+    <main style={{ display: "flex", flexDirection: "row", paddingTop: 16 }}>
       <div style={{ flex: 1 }}>
         <ProductCompartment addToCart={addToCart} />
       </div>

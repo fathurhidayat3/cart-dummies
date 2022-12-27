@@ -16,7 +16,7 @@ export default function Cart(props: Props) {
   return (
     <div>
       <h2>Cart</h2>
-      <div style={{ paddingBottom: 20 }}>
+      <div>
         {items.length > 0 ? (
           <ul>
             {items.map((item: CartItem) => {
@@ -30,7 +30,7 @@ export default function Cart(props: Props) {
                     <button onClick={() => decreaseAmount(item.id)}>-</button> |{" "}
                     <button onClick={() => increaseAmount(item.id)}>+</button> |{" "}
                     <button onClick={() => removeItem(item.id, item.name)}>
-                      Remove Item ?
+                      Remove Item
                     </button>
                   </div>
                 </li>
@@ -41,6 +41,7 @@ export default function Cart(props: Props) {
           "Cart is Empty"
         )}
       </div>
+      <hr />
       <h3>Total Price</h3>
       {calculateCartTotalPrice(items)}
     </div>

@@ -14,13 +14,25 @@ interface Props {
 function AppCompartment(props: Props) {
   const { title, children } = props;
 
+  const [expand, setExpand] = React.useState(true);
+
   return (
     <div style={{ paddingBottom: 20 }}>
-      <h3>{title}</h3>
-      {children}
-      <div style={{ marginTop: 20 }}>
-        <hr />
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          padding: "8px 16px",
+          backgroundColor: "grey",
+          borderRadius: 4,
+        }}
+      >
+        <h3 style={{ color: "white" }}>{title}</h3>
+        <button onClick={() => setExpand(!expand)}>
+          {expand ? "Collapse" : "Expand"}
+        </button>
       </div>
+      {expand ? children : null}
     </div>
   );
 }
