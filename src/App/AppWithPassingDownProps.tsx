@@ -1,6 +1,7 @@
 import * as React from "react";
 
 import Cart from "../components/Cart";
+import Main from "../components/Main";
 import ProductCompartment from "../components/ProductCompartment";
 import mapProductToCartItem from "../mappers/mapProductToCartItem";
 import { CartItem } from "../models/Cart";
@@ -9,7 +10,7 @@ import { Product } from "../models/Product";
 export default function AppWithPassingDownProps() {
   const [cartItems, setCartItems] = React.useState<CartItem[]>([]);
 
-  const handleAddToCart = (product: Product) => {
+  const addToCart = (product: Product) => {
     const newCartItem = mapProductToCartItem(product);
 
     if (cartItems.some((cartItem) => cartItem.id === newCartItem.id)) {
@@ -27,7 +28,7 @@ export default function AppWithPassingDownProps() {
     }
   };
 
-  const handleDecreaseAmount = (id: string) => {
+  const decreaseAmount = (id: string) => {
     const newCartItems = [...cartItems].map((cartItem) => {
       if (cartItem.id === id && cartItem.amount > 0) {
         return { ...cartItem, amount: cartItem.amount - 1 };
@@ -39,7 +40,7 @@ export default function AppWithPassingDownProps() {
     setCartItems(newCartItems);
   };
 
-  const handleIncreaseAmount = (id: string) => {
+  const increaseAmount = (id: string) => {
     const newCartItems = [...cartItems].map((cartItem) => {
       if (cartItem.id === id) {
         return { ...cartItem, amount: cartItem.amount + 1 };
@@ -51,7 +52,7 @@ export default function AppWithPassingDownProps() {
     setCartItems(newCartItems);
   };
 
-  const handleRemoveItem = (id: string, name: string) => {
+  const removeItem = (id: string, name: string) => {
     if (confirm(`Are you sure want to remove ${name}`) === true) {
       const newCartItems = [...cartItems].filter(
         (cartItem) => cartItem.id !== id
@@ -62,14 +63,12 @@ export default function AppWithPassingDownProps() {
   };
 
   return (
-    <main>
-      <ProductCompartment addToCart={handleAddToCart} />
-      <Cart
-        items={cartItems}
-        decreaseAmount={handleDecreaseAmount}
-        increaseAmount={handleIncreaseAmount}
-        removeItem={handleRemoveItem}
-      />
-    </main>
+    <Main
+      cartItems={cartItems}
+      addToCart={addToCart}
+      decreaseAmount={decreaseAmount}
+      increaseAmount={increaseAmount}
+      removeItem={removeItem}
+    />
   );
 }

@@ -1,22 +1,19 @@
 import * as React from "react";
 
-import Cart from "../components/Cart";
 import { CartContext } from "../components/Cart/CartContext";
-import ProductCompartment from "../components/ProductCompartment";
+import Main from "../components/Main";
 
 export default function AppWithCartContext() {
   const { cartItems, addToCart, decreaseAmount, increaseAmount, removeItem } =
     React.useContext(CartContext);
 
   return (
-    <main>
-      <ProductCompartment addToCart={addToCart} />
-      <Cart
-        items={cartItems}
-        decreaseAmount={decreaseAmount}
-        increaseAmount={increaseAmount}
-        removeItem={removeItem}
-      />
-    </main>
+    <Main
+      cartItems={cartItems}
+      addToCart={addToCart}
+      decreaseAmount={decreaseAmount}
+      increaseAmount={increaseAmount}
+      removeItem={removeItem}
+    />
   );
 }

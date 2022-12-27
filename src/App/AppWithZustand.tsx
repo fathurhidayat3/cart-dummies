@@ -1,9 +1,8 @@
 import * as React from "react";
 import shallow from "zustand/shallow";
 
-import Cart from "../components/Cart";
 import useCartStore from "../components/Cart/useCartStore";
-import ProductCompartment from "../components/ProductCompartment";
+import Main from "../components/Main";
 
 export default function AppWithZustand() {
   const { cartItems, addToCart, decreaseAmount, increaseAmount, removeItem } =
@@ -19,18 +18,12 @@ export default function AppWithZustand() {
     );
 
   return (
-    <main>
-      <ProductCompartment addToCart={addToCart} />
-      <Cart
-        items={cartItems}
-        decreaseAmount={decreaseAmount}
-        increaseAmount={increaseAmount}
-        removeItem={(id, name) => {
-          if (confirm(`Are you sure want to remove ${name}`) === true) {
-            removeItem(id, name);
-          }
-        }}
-      />
-    </main>
+    <Main
+      cartItems={cartItems}
+      addToCart={addToCart}
+      decreaseAmount={decreaseAmount}
+      increaseAmount={increaseAmount}
+      removeItem={removeItem}
+    />
   );
 }

@@ -17,20 +17,20 @@ interface CartReducerAction {
 }
 
 interface CartState {
-  items: CartItem[];
+  cartItems: CartItem[];
 }
 
 function cartReducer(state: CartState, action: CartReducerAction): CartState {
   const { type, product, productID } = action;
-  const { items } = state;
+  const { cartItems } = state;
 
   switch (type) {
     case CartReducerActionKind.ADD_TO_CART: {
       if (product) {
         const newCartItem = mapProductToCartItem(product);
 
-        if (items.some((cartItem) => cartItem.id === newCartItem.id)) {
-          const newCartItems = items.map((cartItem) => {
+        if (cartItems.some((cartItem) => cartItem.id === newCartItem.id)) {
+          const newCartItems = cartItems.map((cartItem) => {
             if (cartItem.id === newCartItem.id) {
               cartItem.amount = cartItem.amount + 1;
             }
@@ -38,16 +38,16 @@ function cartReducer(state: CartState, action: CartReducerAction): CartState {
             return cartItem;
           });
 
-          return { items: newCartItems };
+          return { cartItems: newCartItems };
         } else {
-          return { items: [...items, newCartItem] };
+          return { cartItems: [...cartItems, newCartItem] };
         }
       }
       return state;
     }
     case CartReducerActionKind.DECREASE_AMOUNT: {
       if (productID) {
-        const newCartItems = [...items].map((cartItem) => {
+        const newCartItems = [...cartItems].map((cartItem) => {
           if (cartItem.id === productID && cartItem.amount > 0) {
             return { ...cartItem, amount: cartItem.amount - 1 };
           }
@@ -55,13 +55,13 @@ function cartReducer(state: CartState, action: CartReducerAction): CartState {
           return cartItem;
         });
 
-        return { items: newCartItems };
+        return { cartItems: newCartItems };
       }
       return state;
     }
     case CartReducerActionKind.INCREASE_AMOUNT: {
       if (productID) {
-        const newCartItems = [...items].map((cartItem) => {
+        const newCartItems = [...cartItems].map((cartItem) => {
           if (cartItem.id === productID) {
             return { ...cartItem, amount: cartItem.amount + 1 };
           }
@@ -69,17 +69,17 @@ function cartReducer(state: CartState, action: CartReducerAction): CartState {
           return cartItem;
         });
 
-        return { items: newCartItems };
+        return { cartItems: newCartItems };
       }
       return state;
     }
     case CartReducerActionKind.REMOVE_ITEM: {
       if (productID) {
-        const newCartItems = [...items].filter(
+        const newCartItems = [...cartItems].filter(
           (cartItem) => cartItem.id !== productID
         );
 
-        return { items: newCartItems };
+        return { cartItems: newCartItems };
       }
 
       return state;
@@ -91,7 +91,7 @@ function cartReducer(state: CartState, action: CartReducerAction): CartState {
 }
 
 const initialState: CartState = {
-  items: [],
+  cartItems: [],
 };
 
 export default function useCartReducer() {

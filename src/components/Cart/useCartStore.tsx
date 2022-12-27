@@ -56,10 +56,13 @@ export default create<CartState>((set) => ({
     set((state) => {
       const { cartItems } = state;
 
-      const newCartItems = [...cartItems].filter(
-        (cartItem) => cartItem.id !== productID
-      );
+      if (confirm(`Are you sure want to remove ${name}`) === true) {
+        const newCartItems = [...cartItems].filter(
+          (cartItem) => cartItem.id !== productID
+        );
 
-      return { cartItems: newCartItems };
+        return { cartItems: newCartItems };
+      }
+      return state;
     }),
 }));
