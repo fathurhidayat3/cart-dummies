@@ -3,14 +3,10 @@ import mapProductToCartItem from "../../mappers/mapProductToCartItem";
 
 import { CartItem } from "../../models/Cart";
 import { Product } from "../../models/Product";
+import { CartState } from "./types";
 
-interface CartContextType {
-  cartItems: CartItem[];
+interface CartContextType extends CartState {
   setCartItems: (cartItems: CartItem[]) => void;
-  addToCart: (product: Product) => void;
-  decreaseAmount: (id: string) => void;
-  increaseAmount: (id: string) => void;
-  removeItem: (id: string, name: string) => void;
 }
 
 export const CartContext = React.createContext<CartContextType>({
