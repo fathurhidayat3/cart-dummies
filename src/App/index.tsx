@@ -5,6 +5,7 @@ import AppWithPassingDownProps from "./AppWithPassingDownProps";
 import AppWithReducer from "./AppWithReducer";
 import CartContextProvider from "../components/Cart/CartContext";
 import AppWithZustand from "./AppWithZustand";
+import AppWithJotai from "./AppWithJotai";
 
 interface Props {
   title: string;
@@ -54,6 +55,7 @@ const appCompartmentConfigs: AppCompartmentConfig[] = [
   },
   { title: "With Reducer", children: <AppWithReducer /> },
   { title: "With Zustand", children: <AppWithZustand /> },
+  { title: "With Jotai", children: <AppWithJotai /> },
 ];
 
 export default function App() {
