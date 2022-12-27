@@ -1,8 +1,6 @@
 import * as React from "react";
 
-import Cart from "../components/Cart";
 import Main from "../components/Main";
-import ProductCompartment from "../components/ProductCompartment";
 import mapProductToCartItem from "../mappers/mapProductToCartItem";
 import { CartItem } from "../models/Cart";
 import { Product } from "../models/Product";
